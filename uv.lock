@@ -389,11 +389,11 @@ wheels = [
 
 [[package]]
 name = "dill"
-version = "0.3.9"
+version = "0.4.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/70/43/86fe3f9e130c4137b0f1b50784dd70a5087b911fe07fa81e53e0c4c47fea/dill-0.3.9.tar.gz", hash = "sha256:81aa267dddf68cbfe8029c42ca9ec6a4ab3b22371d1c450abc54422577b4512c", size = 187000 }
+sdist = { url = "https://files.pythonhosted.org/packages/12/80/630b4b88364e9a8c8c5797f4602d0f76ef820909ee32f0bacb9f90654042/dill-0.4.0.tar.gz", hash = "sha256:0633f1d2df477324f53a895b02c901fb961bdbf65a17122586ea7019292cbcf0", size = 186976 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/46/d1/e73b6ad76f0b1fb7f23c35c6d95dbc506a9c8804f43dda8cb5b0fa6331fd/dill-0.3.9-py3-none-any.whl", hash = "sha256:468dff3b89520b474c0397703366b7b95eebe6303f108adf9b19da1f702be87a", size = 119418 },
+    { url = "https://files.pythonhosted.org/packages/50/3d/9373ad9c56321fdab5b41197068e1d8c25883b3fea29dd361f9b55116869/dill-0.4.0-py3-none-any.whl", hash = "sha256:44f54bf6412c2c8464c14e8243eb163690a9800dbe2c367330883b19c7561049", size = 119668 },
 ]
 
 [[package]]
@@ -593,7 +593,7 @@ dev = [
 
 [[package]]
 name = "funcnodes-core"
-version = "0.3.52"
+version = "0.3.53"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "dill" },
@@ -602,9 +602,9 @@ dependencies = [
     { name = "setuptools" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/30/d8/8a5cdc5cd43ce91c477bfede6ce8a0f967acf35b925e2f6240a6d86efb6d/funcnodes_core-0.3.52.tar.gz", hash = "sha256:79378ff7177a7492040feda3fb44fe12551877dc92ee105ec3d5bb16c7e44eab", size = 92581 }
+sdist = { url = "https://files.pythonhosted.org/packages/3d/cf/6c8c7f06abe437355c95b0b7c59e94efe12cea60772df56fac3aa6e850ee/funcnodes_core-0.3.53.tar.gz", hash = "sha256:2356def5c0c41f07ed895da299685e89d4c46537f927e8a1213bf81d440b8aaf", size = 93160 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/2c/3f/9cfb5777568c8ef66beeb1db35c2e8db358c8dd1336f28059b7e29d4322a/funcnodes_core-0.3.52-py3-none-any.whl", hash = "sha256:a76c17e6f7c359bd9bf03e2915c83114709e50fc467c598dd804bae47238ac85", size = 83231 },
+    { url = "https://files.pythonhosted.org/packages/e5/ea/a6fc4d30cbe3174caac20ef6b1e60d725506b325d8aa5f272ad8c1b6bf4f/funcnodes_core-0.3.53-py3-none-any.whl", hash = "sha256:d3c9d3635d516e26a4236b40da1e368e1e2cc66aa8a839625fb0bb30ee516e49", size = 83813 },
 ]
 
 [[package]]

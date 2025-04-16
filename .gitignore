@@ -352,3 +352,4 @@ yolov8n.pt
 requirements.txt
 /.licensecheck
 ./dev
+/.funcnodes

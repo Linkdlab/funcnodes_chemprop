@@ -1,28 +1,45 @@
-[tool.poetry]
+[project]
 name = "funcnodes-chemprop"
 version = "0.1.2"
 description = ""
-authors = ["Julian Kimmig <julian.kimmig@gmx.net>"]
 readme = "README.md"
-license = "AGPL-3.0"
+dependencies = [
+ "funcnodes-pandas",
+ "chemprop",
+ "funcnodes",
+ "funcnodes-plotly",
+]
+requires-python = ">=3.11,<3.13"
+[[project.authors]]
+name = "Julian Kimmig"
+email = "julian.kimmig@gmx.net"
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.13"
-funcnodes-pandas = "*"
-chemprop = "*"
-funcnodes = "*"
-funcnodes-plotly = "*"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "*"
-ipykernel = "*"
-funcnodes-module = "^0.1.19"
-pre-commit = "*"
+[dependency-groups]
+dev = [
+ "pytest",
+ "ipykernel",
+ "funcnodes-module>=0.1.19",
+ "pre-commit",
+ "pytest-funcnodes>=0.1.0",
+ "funcnodes[profiling]>=0.5.37",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = [ "setuptools>=42",]
+build-backend = "setuptools.build_meta"
 
-[tool.poetry.plugins."funcnodes.module"]
+[project.license]
+text = "AGPL-3.0"
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[project.entry-points."funcnodes.module"]
 module = "funcnodes_chemprop"
 shelf = "funcnodes_chemprop:NODE_SHELF"
+
+
+
+
+[tool.setuptools.packages.find]
+where = [ "src",]

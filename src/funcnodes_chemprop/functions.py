@@ -9,6 +9,7 @@ import numpy as np
 import multiprocessing
 from tqdm import tqdm
 import asyncio
+from funcnodes_core.utils.functions import make_run_in_new_process
 
 
 def make_model(scaler: StandardScaler) -> models.MPNN:
@@ -198,6 +199,10 @@ def _train_in_subprocess_entry(
     )
     return_dict["model"] = model
     return_dict["results"] = results
+    return return_dict
+
+
+_train_in_subprocess = make_run_in_new_process(_train_in_subprocess_entry)
 
 
 async def train_in_subprocess(
@@ -211,9 +216,23 @@ async def train_in_subprocess(
     return_dict = manager.dict()
     queue = manager.Queue()
 
-    p = multiprocessing.Process(
-        target=_train_in_subprocess_entry,
-        args=(
+    # p = multiprocessing.Process(
+    #     target=_train_in_subprocess_entry,
+    #     args=(
+    #         model,
+    #         train_loader,
+    #         val_loader,
+    #         test_loader,
+    #         max_epochs,
+    #         return_dict,
+    #         queue,
+    #     ),
+    # )
+    # p.start()
+
+    async def _runner():
+        # Run the training in a new process
+        return await _train_in_subprocess(
             model,
             train_loader,
             val_loader,
@@ -221,12 +240,14 @@ async def train_in_subprocess(
             max_epochs,
             return_dict,
             queue,
-        ),
-    )
-    p.start()
+        )
+
+    task = asyncio.create_task(_runner())
 
     async def metric_generator(queue):
-        while p.is_alive():
+        # while p.is_alive():
+        while not task.done():
+            # Check if there are metrics in the queue
             try:
                 metrics = queue.get_nowait()
                 yield metrics
@@ -236,8 +257,8 @@ async def train_in_subprocess(
     metrics_generator = metric_generator(queue)
     async for metrics in metrics_generator:
         yield metrics
-    p.join()
-    print(return_dict)
+    # p.join()
+
     yield return_dict["model"], return_dict["results"]
 
 

@@ -22,6 +22,7 @@ dev = [
  "pre-commit",
  "pytest-funcnodes>=0.1.0",
  "funcnodes[profiling]>=0.5.37",
+ "pytest-timeout>=2.3.1",
 ]
 
 [build-system]
